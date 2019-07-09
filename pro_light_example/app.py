@@ -2,12 +2,6 @@ from sinric import SinricPro
 from credentials import apiKey, deviceId
 from sinric import SinricProUdp
 
-tempStates = {
-    'powerLevel': 0,
-    'brightnessLevel': 0
-}
-
-
 def power_state(did, state):
     # Alexa, turn ON/OFF Device
     print(did, state['state'])
@@ -17,21 +11,14 @@ def power_state(did, state):
 def set_brightness(did, state):
     # Alexa set device brightness to 40%
     print(did, 'BrightnessLevel : ', state)
-    tempStates['brightnessLevel'] = state
-    return True, tempStates['brightnessLevel']
+    return True, state
 
 
 def adjust_brightness(did, state):
     # Alexa increase/decrease device brightness by 44
     print(did, 'AdjustBrightnessLevel : ', state)
 
-    tempStates['brightnessLevel'] += state
-    if tempStates['brightnessLevel'] > 100:
-        tempStates['brightnessLevel'] = 100
-    elif tempStates['brightnessLevel'] < 0:
-        tempStates['brightnessLevel'] = 0
-
-    return True, tempStates['brightnessLevel']
+    return True, state
 
 
 def set_color(did, r, g, b):

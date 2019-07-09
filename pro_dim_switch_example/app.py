@@ -2,10 +2,6 @@ from sinric import SinricPro
 from sinric import SinricProUdp
 from credentials import apiKey, deviceId
 
-tempStates = {
-    'powerLevel': 0,
-}
-
 
 def power_state(did, state):
     # Alexa, turn ON/OFF Device
@@ -16,24 +12,13 @@ def power_state(did, state):
 def set_power_level(did, state):
     # Alexa, set power level of device to 50%
     print(did, 'PowerLevel : ', state)
-    tempStates['powerLevel'] = state
-
-    return True, tempStates['powerLevel']
+    return True, state
 
 
 def adjust_power_level(did, state):
     # Alexa increase/decrease power level by 30
     print(did, 'PowerLevelDelta : ', state)
-
-    tempStates['powerLevel'] += state
-    print(tempStates['powerLevel'])
-
-    if tempStates['powerLevel'] > 100:
-        tempStates['powerLevel'] = 100
-    elif tempStates['powerLevel'] < 0:
-        tempStates['powerLevel'] = 0
-
-    return True, tempStates['powerLevel']
+    return True, state
 
 
 callbacks = {
