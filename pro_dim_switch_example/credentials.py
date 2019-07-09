@@ -1,5 +1,5 @@
-apiKey = ''
-deviceId1 = ''
+apiKey = ''  # http://portal.sinric.pro/credential
+deviceId1 = ''  # Dim Switch ID  http://portal.sinric.pro/device/list
 deviceId2 = ''
 deviceId3 = ''
 deviceId4 = ''
