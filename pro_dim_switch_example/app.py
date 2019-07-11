@@ -28,8 +28,7 @@ callbacks = {
 }
 
 if __name__ == '__main__':
-    client = SinricPro(apiKey, deviceId, callbacks)
-    client.socket.enableRequestPrint(False)  # Set it to True to start printing request JSON
+    client = SinricPro(apiKey, deviceId, callbacks, enable_trace=False)
     udp_client = SinricProUdp(callbacks)
     udp_client.enableUdpPrint(False)  # Set it to True to start printing request UDP JSON
     client.handle_all(udp_client)

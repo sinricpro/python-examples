@@ -2,6 +2,7 @@ from sinric import SinricPro
 from credentials import apiKey, deviceId
 from sinric import SinricProUdp
 
+
 def power_state(did, state):
     # Alexa, turn ON/OFF Device
     print(did, state['state'])
@@ -42,8 +43,7 @@ callbacks = {
 }
 
 if __name__ == '__main__':
-    client = SinricPro(apiKey, deviceId, callbacks)
-    client.socket.enableRequestPrint(False)  # Set it to True to start printing request JSON
+    client = SinricPro(apiKey, deviceId, callbacks, enable_trace=False)
     udp_client = SinricProUdp(callbacks)
     udp_client.enableUdpPrint(False)  # Set it to True to start printing request UDP JSON
     client.handle_all(udp_client)
