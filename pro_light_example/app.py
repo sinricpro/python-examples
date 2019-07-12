@@ -34,12 +34,22 @@ def set_color_temperature(did, value):
     return True
 
 
+def increase_color_temperature(deviceId, value):
+    return True, value
+
+
+def decrease_color_temperature(deviceId, value):
+    return True, value
+
+
 callbacks = {
     'powerState': power_state,
     'setBrightness': set_brightness,
     'adjustBrightness': adjust_brightness,
     'setColor': set_color,
-    'setColorTemperature': set_color_temperature
+    'setColorTemperature': set_color_temperature,
+    'increaseColorTemperature': increase_color_temperature,
+    'decreaseColorTemperature': decrease_color_temperature
 }
 
 if __name__ == '__main__':
