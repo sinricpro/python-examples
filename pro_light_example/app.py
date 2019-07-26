@@ -5,8 +5,8 @@ from sinric import SinricProUdp
 
 def power_state(did, state):
     # Alexa, turn ON/OFF Device
-    print(did, state['state'])
-    return True, state['state']
+    print(did, state.get('state'))
+    return True, state.get('state')
 
 
 def set_brightness(did, state):
