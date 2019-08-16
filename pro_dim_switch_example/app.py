@@ -5,8 +5,8 @@ from credentials import apiKey, deviceId
 
 def power_state(did, state):
     # Alexa, turn ON/OFF Device
-    print(did, state.get('state'))
-    return True, state.get('state')
+    print(did, state)
+    return True, state
 
 
 def set_power_level(did, state):
