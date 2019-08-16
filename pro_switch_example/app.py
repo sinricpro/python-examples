@@ -3,14 +3,14 @@ from sinric import SinricProUdp
 from credentials import apiKey, deviceId
 
 
-def power_state(did, state):
+def onPowerState(did, state):
     # Alexa, turn ON/OFF Device
     print(did, state)
     return True, state
 
 
 callbacks = {
-    'powerState': power_state
+    'powerState': onPowerState
 }
 
 if __name__ == '__main__':

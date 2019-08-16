@@ -3,53 +3,53 @@ from credentials import apiKey, deviceId
 from sinric import SinricProUdp
 
 
-def power_state(did, state):
+def onPowerState(did, state):
     # Alexa, turn ON/OFF Device
     print(did, state)
     return True, state
 
 
-def set_brightness(did, state):
+def onSetBrightness(did, state):
     # Alexa set device brightness to 40%
     print(did, 'BrightnessLevel : ', state)
     return True, state
 
 
-def adjust_brightness(did, state):
+def onAdjustBrightness(did, state):
     # Alexa increase/decrease device brightness by 44
     print(did, 'AdjustBrightnessLevel : ', state)
 
     return True, state
 
 
-def set_color(did, r, g, b):
+def onSetColor(did, r, g, b):
     # Alexa set device color to Red/Green
     print(did, 'Red: ', r, 'Green: ', g, 'Blue : ', b)
 
     return True
 
 
-def set_color_temperature(did, value):
+def onSetColorTemperature(did, value):
     print(did, value)
     return True
 
 
-def increase_color_temperature(deviceId, value):
+def onIncreaseColorTemperature(deviceId, value):
     return True, value
 
 
-def decrease_color_temperature(deviceId, value):
+def onDecreaseColorTemperature(deviceId, value):
     return True, value
 
 
 callbacks = {
-    'powerState': power_state,
-    'setBrightness': set_brightness,
-    'adjustBrightness': adjust_brightness,
-    'setColor': set_color,
-    'setColorTemperature': set_color_temperature,
-    'increaseColorTemperature': increase_color_temperature,
-    'decreaseColorTemperature': decrease_color_temperature
+    'powerState': onPowerState,
+    'setBrightness': onSetBrightness,
+    'adjustBrightness': onAdjustBrightness,
+    'setColor': onSetColor,
+    'setColorTemperature': onSetColorTemperature,
+    'increaseColorTemperature': onIncreaseColorTemperature,
+    'decreaseColorTemperature': onDecreaseColorTemperature
 }
 
 if __name__ == '__main__':

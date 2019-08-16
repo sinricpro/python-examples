@@ -3,28 +3,28 @@ from sinric import SinricProUdp
 from credentials import apiKey, deviceId
 
 
-def power_state(did, state):
+def onPowerState(deviceId, state):
     # Alexa, turn ON/OFF Device
-    print(did, state)
+    print(deviceId, state)
     return True, state
 
 
-def set_power_level(did, state):
+def onSetPowerLevel(deviceId, state):
     # Alexa, set power level of device to 50%
-    print(did, 'PowerLevel : ', state)
+    print(deviceId, 'PowerLevel : ', state)
     return True, state
 
 
-def adjust_power_level(did, state):
+def onAdjustPowerLevel(deviceId, state):
     # Alexa increase/decrease power level by 30
-    print(did, 'PowerLevelDelta : ', state)
+    print(deviceId, 'PowerLevelDelta : ', state)
     return True, state
 
 
 callbacks = {
-    'powerState': power_state,
-    'setPowerLevel': set_power_level,
-    'adjustPowerLevel': adjust_power_level
+    'powerState': onPowerState,
+    'setPowerLevel': onSetPowerLevel,
+    'adjustPowerLevel': onAdjustPowerLevel
 }
 
 if __name__ == '__main__':
