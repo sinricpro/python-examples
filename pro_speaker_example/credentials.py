@@ -1,4 +1,4 @@
 apiKey = ''
-tvId = ''
-deviceIdArr = [tvId]
+speakerId = ''
+deviceIdArr = [speakerId]
 deviceId = ';'.join(deviceIdArr)

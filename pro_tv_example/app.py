@@ -13,7 +13,6 @@ def Events():
         # client.event_handler.raiseEvent(tvId, 'mediaControl',data={'control': 'FastForward'})
         # client.event_handler.raiseEvent(tvId, 'changeChannel',data={'name': 'HBO'})
         # client.event_handler.raiseEvent(tvId, 'selectInput',data={"input":"HDMI"})
-
         sleep(2)
 
 
@@ -28,11 +27,14 @@ def onPowerState(deviceId, state):
 
 
 def onSetVolume(deviceId, volume):
+    print('Volume : ',volume)
+
     # Do Somethign
     return True, volume
 
 
 def onAdjustVolume(deviceId, volume):
+    print('Volume : ',volume)
     # Do something with volume
     return True, volume
 
@@ -68,7 +70,8 @@ callbacks = {
 }
 
 if __name__ == '__main__':
-    client = SinricPro(apiKey, deviceId, callbacks, event_callback, enable_trace=False)
+    client = SinricPro(apiKey, deviceId, callbacks, event_callback, enable_trace=True)
     udp_client = SinricProUdp(callbacks)
     udp_client.enableUdpPrint(False)  # Set it to True to start printing request UDP JSON
     client.handle_all(udp_client)
+
