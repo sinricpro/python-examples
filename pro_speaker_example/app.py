@@ -11,6 +11,7 @@ def Events():
 
         # client.event_handler.raiseEvent(speakerId, 'setBands',data={'name': '','level': 0})
         # client.event_handler.raiseEvent(speakerId, 'setMode',data={'mode': ''})
+        # client.event_handler.raiseEvent(speakerId, 'setLockState',data={'mute': True})
         sleep(2)
 
 
@@ -46,13 +47,18 @@ def onSetMode(deviceId, mode):
     # Do something with mode
     return True, mode
 
+def onSetMute(deviceId, mute):
+    #Muted : True, Not muted : False
+    return True,mute
+
 
 callbacks = {
     'powerState': onPowerState,
     'setBands': onSetBands,
     'setMode': onSetMode,
     'adjustBands': onAdjustBands,
-    'resetBands': onResetBands
+    'resetBands': onResetBands,
+    'setMute': onSetMute
 }
 
 if __name__ == '__main__':
