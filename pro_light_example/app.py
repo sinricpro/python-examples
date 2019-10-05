@@ -1,5 +1,5 @@
 from sinric import SinricPro
-from credentials import apiKey, deviceId
+from credentials import appKey, deviceId, secretKey
 from sinric import SinricProUdp
 
 
