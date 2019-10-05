@@ -1,6 +1,6 @@
 from sinric import SinricPro
 from sinric import SinricProUdp
-from credentials import appKey, deviceId, secretKey,deviceId1
+from credentials import appKey, deviceId, secretKey
 from time import sleep
 
 def Events():
@@ -8,37 +8,24 @@ def Events():
         # Select as per your requirements
         # REMOVE THE COMMENTS TO USE
         # client.event_handler.raiseEvent(deviceId1, 'setPowerState',data={'state': 'On'})
-        sleep(2)
+        sleep(2) #Sleep for 2 seconds 
 
-
-def onPowerState(deviceId, state):
+def onPowerState(did, state):
     # Alexa, turn ON/OFF Device
-    print(deviceId, state)
+    print(did, state)
     return True, state
 
-
-def onSetPowerLevel(deviceId, state):
-    # Alexa, set power level of device to 50%
-    print(deviceId, 'PowerLevel : ', state)
-    return True, state
-
-
-def onAdjustPowerLevel(deviceId, state):
-    # Alexa increase/decrease power level by 30
-    print(deviceId, 'PowerLevelDelta : ', state)
-    return True, state
 
 eventsCallbacks={
     "Events": Events
 }
+
 callbacks = {
-    'powerState': onPowerState,
-    'setPowerLevel': onSetPowerLevel,
-    'adjustPowerLevel': onAdjustPowerLevel
+'powerState': onPowerState
 }
 
 if __name__ == '__main__':
-    client = SinricPro(appKey, deviceId, callbacks,event_callbacks=eventsCallbacks, enable_trace=False, enable_track=True, secretKey=secretKey)
-    udp_client = SinricProUdp(callbacks)
-    udp_client.enableUdpPrint(False)  # Set it to True to start printing request UDP JSON
+    client = SinricPro(appKey, deviceId, callbacks,event_callbacks=eventsCallbacks, enable_trace=False,secretKey=secretKey)
+    udp_client = SinricProUdp(callbacks,deviceId)
+    udp_client.enableUdpPrint(False)  # Set it to True to start logging request Offline Request/Response
     client.handle_all(udp_client)
