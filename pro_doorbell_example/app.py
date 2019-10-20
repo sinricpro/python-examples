@@ -15,14 +15,15 @@ def Events():
         sleep(2)
 
 
-request_callbacks = {}
+callbacks = {}
 
-event_callbacks = {
+eventsCallbacks = {
     'Events': Events
 }
 
 if __name__ == '__main__':
-    client = SinricPro(appKey, deviceId, request_callbacks, event_callbacks, enable_trace=True, enable_track=True)
-    udp_client = SinricProUdp(request_callbacks)
+    client = SinricPro(appKey, deviceId, callbacks, event_callbacks=eventsCallbacks, enable_trace=False,
+                       enable_track=True, secretKey=secretKey)
+    udp_client = SinricProUdp(callbacks)
     udp_client.enableUdpPrint(False)  # Set it to True to start printing request UDP JSON
     client.handle_all(udp_client)
