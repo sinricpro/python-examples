@@ -1,19 +1,7 @@
 from sinric import SinricPro
-from credentials import appKey, lightId,secretKey
+from credentials import apiKey, deviceId
 from sinric import SinricProUdp
-from sinric import eventNames
-from time import sleep
 
-def Events():
-    while True:
-        # client.event_handler.raiseEvent(lightId,eventNames.get('brightness_event','setBrightness'),{'brightness':45})
-        # client.event_handler.raiseEvent(lightId,eventNames.get('color_event','setColor'),{'r':45,'g':3,'b':100})
-        # client.event_handler.raiseEvent(lightId,eventNames.get('color_temperature_event','setColorTemperature'),{'colorTemperature': 2400})
-        sleep(2)
-
-eventsCallbacks = {
-    'Events': Events
-}
 
 def onPowerState(did, state):
     # Alexa, turn ON/OFF Device
@@ -65,8 +53,7 @@ callbacks = {
 }
 
 if __name__ == '__main__':
-    client = SinricPro(appKey, deviceId, callbacks, event_callbacks=eventsCallbacks, enable_trace=False,
-                       enable_track=True, secretKey=secretKey)
+    client = SinricPro(apiKey, deviceId, callbacks, enable_trace=False, enable_track=True)
     udp_client = SinricProUdp(callbacks)
     udp_client.enableUdpPrint(False)  # Set it to True to start printing request UDP JSON
     client.handle_all(udp_client)
