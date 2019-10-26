@@ -1,4 +1,5 @@
-apiKey = ''  #http://portal.sinric.pro/credential
-lightId = ''  # Bulb ID  http://portal.sinric.pro/device/list
+appKey = ''
+secretKey=''
+lightId=''
 deviceIdArr = [lightId]
 deviceId = ';'.join(deviceIdArr)

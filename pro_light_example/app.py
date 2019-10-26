@@ -1,6 +1,17 @@
 from sinric import SinricPro
-from credentials import apiKey, deviceId
+from credentials import appKey, deviceId, secretKey
 from sinric import SinricProUdp
+
+
+def Events():
+    while True:
+        client.event_handler.raiseEvent(doorBellId, eventNames['door_bell_event'])
+        sleep(2)
+
+
+eventCallbacks = {
+    'Events': Events
+}
 
 
 def onPowerState(did, state):
@@ -53,7 +64,8 @@ callbacks = {
 }
 
 if __name__ == '__main__':
-    client = SinricPro(apiKey, deviceId, callbacks, enable_trace=False, enable_track=True)
+    client = SinricPro(appKey, deviceId, callbacks, event_callbacks=eventCallbacks, enable_trace=False,
+                       enable_track=True, secretKey=secretKey)
     udp_client = SinricProUdp(callbacks)
     udp_client.enableUdpPrint(False)  # Set it to True to start printing request UDP JSON
     client.handle_all(udp_client)
