@@ -1,5 +1,5 @@
 from sinric import SinricPro
-from credentials import appKey, deviceId, secretKey, speakerId
+from credentials import appKey, deviceId, secretKey, speakerId, deviceIdArr
 from sinric import SinricProUdp
 from time import sleep
 
@@ -25,20 +25,20 @@ def onPowerState(deviceId, state):
     return True, state
 
 
-def onSetBands(deviceId, name,level):
-    print(name,level)
+def onSetBands(deviceId, name, level):
+    print(name, level)
 
     # Do Somethign
-    return True, {'name': name,'level': level}
+    return True, {'name': name, 'level': level}
 
 
-def onAdjustBands(deviceId, name,level,direction):
+def onAdjustBands(deviceId, name, level, direction):
     # Do something with level
 
-    return True, {'name': name,'level': level}
+    return True, {'name': name, 'level': level}
 
 
-def onResetBands(deviceId, band1,band2,band3):
+def onResetBands(deviceId, band1, band2, band3):
     # Do something with reset
     return True
 
@@ -47,9 +47,10 @@ def onSetMode(deviceId, mode):
     # Do something with mode
     return True, mode
 
+
 def onSetMute(deviceId, mute):
-    #Muted : True, Not muted : False
-    return True,mute
+    # Muted : True, Not muted : False
+    return True, mute
 
 
 callbacks = {
@@ -64,5 +65,6 @@ callbacks = {
 if __name__ == '__main__':
     client = SinricPro(appKey, deviceId, callbacks, event_callbacks=event_callback, enable_trace=False,
                        enable_track=True, secretKey=secretKey)
-    udp_client = SinricProUdp(callbacks, enable_trace=False)  # Set it to True to start printing request UDP JSON
+    udp_client = SinricProUdp(callbacks, deviceIdArr,
+                              enable_trace=False)  # Set it to True to start printing request UDP JSON
     client.handle_all(udp_client)

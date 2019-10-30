@@ -1,8 +1,7 @@
 from sinric import SinricPro
-from credentials import appKey, deviceId, secretKey, tvId
+from credentials import appKey, deviceId, secretKey, tvId, deviceIdArr
 from sinric import SinricProUdp
 from time import sleep
-
 
 
 def Events():
@@ -73,5 +72,6 @@ callbacks = {
 if __name__ == '__main__':
     client = SinricPro(appKey, deviceId, callbacks, event_callbacks=event_callback, enable_trace=False,
                        enable_track=True, secretKey=secretKey)
-    udp_client = SinricProUdp(callbacks,enable_trace=False) # Set it to True to start printing request UDP JSON
+    udp_client = SinricProUdp(callbacks, deviceIdArr,
+                              enable_trace=False)  # Set it to True to start printing request UDP JSON
     client.handle_all(udp_client)
