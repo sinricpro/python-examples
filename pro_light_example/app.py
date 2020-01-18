@@ -1,13 +1,13 @@
 from sinric import SinricPro
-from credentials import appKey, deviceId, secretKey, deviceIdArr
+from credentials import appKey, lightId, secretKey, deviceIdArr
 from sinric import SinricProUdp
-
 
 def Events():
     while True:
-        client.event_handler.raiseEvent(doorBellId, eventNames['door_bell_event'])
-        sleep(2)
-
+    #    client.event_handler.raiseEvent(lightId, 'setPowerState',data={'state': 'On'})
+    # client.event_handler.raiseEvent(deviceId1, 'setColor',data={'r': 0,'g': 0,'b': 0})
+    # client.event_handler.raiseEvent(deviceId1, 'setColorTemperature',data={'colorTemperature': 2400})
+        pass
 
 eventCallbacks = {
     'Events': Events
@@ -64,8 +64,7 @@ callbacks = {
 }
 
 if __name__ == '__main__':
-    client = SinricPro(appKey, deviceId, callbacks, event_callbacks=eventCallbacks, enable_trace=False,
-                       enable_track=True, secretKey=secretKey)
-    udp_client = SinricProUdp(callbacks, deviceIdArr,
-                              enable_trace=False)  # Set it to True to start printing request UDP JSON
+    client = SinricPro(appKey, deviceIdArr, callbacks,event_callbacks=eventCallbacks, 
+        enable_log=False,restore_states=True,secretKey=secretKey)
+    udp_client = SinricProUdp(callbacks,deviceIdArr,enable_trace=False)  # Set it to True to start logging request Offline Request/Response
     client.handle_all(udp_client)

@@ -1,3 +1,5 @@
 .vscode/
 env/
 .idea/
+envsinric/
+__pycache__/
