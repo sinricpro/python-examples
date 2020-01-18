@@ -1,3 +1,0 @@
-2020-01-19 00:02:35.503 | SUCCESS  | sinric._sinricprosocket:connect:40 - Connected 😉
-2020-01-19 00:02:35.513 | SUCCESS  | sinric._sinricprosocket:connect:45 - Timestamp is in sync  😃
-2020-01-19 00:02:53.191 | ERROR    | sinric._sinricpro:handle_all:70 - Keyboard Interrupt

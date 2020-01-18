@@ -1,7 +1,7 @@
 from sinric import SinricPro
 from credentials import appKey, deviceId, secretKey, speakerId, deviceIdArr
 from sinric import SinricProUdp
-from time import sleep
+
 
 
 def Events():
@@ -12,7 +12,7 @@ def Events():
         # client.event_handler.raiseEvent(speakerId, 'setBands',data={'name': '','level': 0})
         # client.event_handler.raiseEvent(speakerId, 'setMode',data={'mode': ''})
         # client.event_handler.raiseEvent(speakerId, 'setLockState',data={'mute': True})
-        sleep(2)
+        pass
 
 
 event_callback = {
@@ -63,8 +63,7 @@ callbacks = {
 }
 
 if __name__ == '__main__':
-    client = SinricPro(appKey, deviceId, callbacks, event_callbacks=event_callback, enable_trace=False,
-                       enable_track=True, secretKey=secretKey)
-    udp_client = SinricProUdp(callbacks, deviceIdArr,
-                              enable_trace=False)  # Set it to True to start printing request UDP JSON
+    client = SinricPro(appKey, deviceIdArr, callbacks,
+        event_callbacks=event_callback, enable_log=False,restore_states=True,secretKey=secretKey)
+    udp_client = SinricProUdp(callbacks,deviceIdArr,enable_trace=False)  # Set it to True to start logging request Offline Request/Response
     client.handle_all(udp_client)

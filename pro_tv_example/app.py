@@ -1,8 +1,6 @@
 from sinric import SinricPro
-from credentials import appKey, deviceId, secretKey, tvId, deviceIdArr
+from credentials import appKey, secretKey, tvId, deviceIdArr
 from sinric import SinricProUdp
-from time import sleep
-
 
 def Events():
     while True:
@@ -13,8 +11,7 @@ def Events():
         # client.event_handler.raiseEvent(tvId, 'mediaControl',data={'control': 'FastForward'})
         # client.event_handler.raiseEvent(tvId, 'changeChannel',data={'name': 'HBO'})
         # client.event_handler.raiseEvent(tvId, 'selectInput',data={"input":"HDMI"})
-        sleep(2)
-
+        pass
 
 event_callback = {
     'Events': Events
@@ -70,8 +67,7 @@ callbacks = {
 }
 
 if __name__ == '__main__':
-    client = SinricPro(appKey, deviceId, callbacks, event_callbacks=event_callback, enable_trace=False,
-                       enable_track=True, secretKey=secretKey)
-    udp_client = SinricProUdp(callbacks, deviceIdArr,
-                              enable_trace=False)  # Set it to True to start printing request UDP JSON
+    client = SinricPro(appKey, deviceIdArr, callbacks,
+        event_callbacks=event_callback, enable_log=False,restore_states=True,secretKey=secretKey)
+    udp_client = SinricProUdp(callbacks,deviceIdArr,enable_trace=False)  # Set it to True to start logging request Offline Request/Response
     client.handle_all(udp_client)
