@@ -3,3 +3,4 @@ env/
 .idea/
 envsinric/
 __pycache__/
+sinricpro_logfile.log
