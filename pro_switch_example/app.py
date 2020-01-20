@@ -16,7 +16,7 @@ def Events():
         # REMOVE THE COMMENTS TO USE
 
         # client.event_handler.raiseEvent(tvId, 'setPowerState',data={'state': 'On'})
-        sleep(2)
+        pass
 
 
 event_callback = {

@@ -11,8 +11,8 @@ DON'T FORGET TO TURN ON 'Doorbell Press' IN ALEXA APP
 
 def Events():
     while True:
-        client.event_handler.raiseEvent(doorBellId, eventNames['door_bell_event'])
-        sleep(2)
+        # client.event_handler.raiseEvent(doorBellId, eventNames['door_bell_event'])
+        pass
 
 
 callbacks = {}
